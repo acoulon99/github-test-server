@@ -27,6 +27,10 @@ Prerequiresites: [Vagrant](https://www.vagrantup.com/) and [VirtualBox](https://
 
 4. Clone the repository and enter the project directory
 
+   ```
+   git clone git@github.com:acoulon99/github-test-server.git
+   ```
+
 5. start the virtual machine
 
   ```
