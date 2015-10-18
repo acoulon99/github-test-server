@@ -16,28 +16,28 @@ echo "BRANCH: $GIT_BRANCH"
 
 # remove project if there (left from crash or something else maybe)
 echo "Cloning repository.."
-if [[ -d $TESTGROUND/$GIT_REF ]]; then
-   sudo -u vagrant rm -r $TESTGROUND/$GIT_REF
+if [[ -d $TESTING_GROUND/$GIT_REF ]]; then
+   sudo -u vagrant rm -r $TESTING_GROUND/$GIT_REF
 fi
 
 # clone project branch
-pushd $TESTGROUND > /dev/null
+pushd $TESTING_GROUND > /dev/null
 sudo -u vagrant git clone -b $GIT_BRANCH --depth 1 git@github.com:${GIT_REF}.git $GIT_REF
 popd > /dev/null
 
 # install dependencies and run tests
 echo "Installing dependencies..."
-pushd $TESTGROUND/$GIT_REF/server > /dev/null
+pushd $TESTING_GROUND/$GIT_REF > /dev/null
 npm install
 
 echo "Running tests..."
 set +e
-npm run citest
+npm test
 set -e
 
 # timestamp and copy results to the log folder
 CURRENT_TIME=$(date "+%Y-%m-%d-%H-%M-%S")
-LOGFILE=$RUNTIME_HOME/logs/server/mocha-test-result.$CURRENT_TIME.xml
+LOGFILE=$PROJECT_HOME/logs/mocha-test-result.$CURRENT_TIME.xml
 cp mocha-test-result.xml $LOGFILE
 popd > /dev/null
 

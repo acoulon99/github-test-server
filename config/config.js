@@ -7,6 +7,7 @@ module.exports = {
 	tests: {
 		maxSimultaneous: process.env.MAX_SIMULTANEOUS_TESTS || 1,
 		launchScriptLocation: process.env.PROJECT_HOME ? process.env.PROJECT_HOME + '/bin/launch-test.sh' : '/home/vagrant/bin/launch-test.sh';
+		testDirectory: process.env.TESTING_GROUND || '/home/vagrant/testground'
 	},
 	github: {
 		accessToken: process.env.GITHUB_ACCESS_TOKEN,
