@@ -17,7 +17,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   # provision scripts - run as vagrant user
-  config.vm.provision :shell, path: "./scripts/setup-mongo.sh", privileged: false      # mongo
+  config.vm.provision :shell, path: "./scripts/setup-mongo.sh", privileged: false     # mongo
   config.vm.provision :shell, path: "./scripts/dev-env-setup.sh", privileged: false   # general - server
 
   # Create a private network, which allows host-only access to the machine
