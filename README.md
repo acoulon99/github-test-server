@@ -10,81 +10,48 @@ The goal of this project is to create an open source, GitHub integrated test ser
 ## Getting Started
 Prerequiresites: [Vagrant](https://www.vagrantup.com/) and [VirtualBox](https://www.virtualbox.org/wiki/Download_Old_Builds_4_3) v4.3
 
-1. Add your GitHub keys to your SSH agent
+1. If necessary, [create / add an SSH key to your GitHub account](https://help.github.com/articles/generating-ssh-keys/).
 
-  OSX:
+2. On *NON*-Macs, start the `ssh-agent`:
+
+   ```
+   eval `ssh-agent -s`
+   ```
+   On Macs ([after 10.5.1](http://www-uxsup.csx.cam.ac.uk/~aia21/osx/leopard-ssh.html)), the `ssh-agent` is auto-launched as needed.
+
+3. Add your GitHub registered SSH key to your `ssh-agent':
 
   ```
-  eval `ssh-agent`
-  ssh-add ~/.ssh/id_rsa (or the location of your GitHub key)
+  ssh-add <path-to-key>
   ```
 
-2. Clone the repository and enter the project directory
+4. Clone the repository and enter the project directory
 
-3. start the virtual machine
+5. start the virtual machine
 
   ```
   $ vagrant up
   ```
 
-4. SSH into the virtual machine 
+6. SSH into the virtual machine 
 
   ```
   $ vagrant ssh
   ```
 
-At this point the virtual machine will be up with the server and file watchers running and can be visited locally at `192.168.33.10:3000`
+  At this point the virtual machine will be up with the server and file watchers running and can be visited locally at `192.168.33.10:3000`
 
-5. Launch tests for a project
+7. Launch tests for a project
  
   ```
   $ grunt test --repo="owner/repo-name" --branch="master"
   ```
 
-This will clone the repository and specified branch, install dependencies and run tests in the project root using `npm`.
+  This will clone the repository and specified branch, install dependencies and run tests in the project root using `npm`.
 
-
-## For development on this project
-Let me know! :)
-Feel free to create issues, forkes, and pull requests and definitely don't hesitate to reach out to me with any questions.
-
-### Vagrant (recommended)
-Prerequiresites: [Vagrant](https://www.vagrantup.com/) and [VirtualBox](https://www.virtualbox.org/wiki/Download_Old_Builds_4_3) v4.3
-
-1. Clone the repository and enter the project directory
-
-2. start the virtual machine
-
-  ```
-  $ vagrant up
-  ```
-
-3. SSH into the virtual machine 
-
-  ```
-  $ vagrant ssh
-  ```
-
-At this point the virtual machine will be up with the server and file watchers running and can be visited locally at `192.168.33.10:3000`
-
-### Local
-Prerequiresites: [Node.js](https://nodejs.org)
-
-1. Clone the repository and enter the project directory
-
-2. Install dependencies
-
-  ```
-  $ npm install
-  ```
-  
-3. Start the server
-
-  ```
-  $ node server.js
-  ```
-
-Now the server will be hosted locally on port 3000.
+## For contributing to this project..
+Let me know!
+Feel free to create issues, forks, and pull requests and definitely don't hesitate to reach out to me with any questions.
 
 ## Stack
 - [Node.js](https://nodejs.org) - Javascript runtime
