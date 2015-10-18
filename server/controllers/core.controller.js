@@ -1,4 +1,4 @@
 // Serve welcome message
-exports.helloApi = function(req, res){
-	res.send('<p>Hello API!</p>');
+exports.serveHello = function(req, res){
+	res.send('<p>Hello GitHub Integrated Test Server!</p>');
 };

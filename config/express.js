@@ -53,7 +53,7 @@ module.exports = function(){
 	var SIX_MONTHS = 15778476000;
 	app.use(helmet.xframe());
 	app.use(helmet.xssFilter());
-	//app.use(helmet.nosniff());
+	app.use(helmet.nosniff());
 	app.use(helmet.ienoopen());
 	app.use(helmet.hsts({
 		maxAge: SIX_MONTHS,
@@ -63,11 +63,11 @@ module.exports = function(){
 	app.disable('x-powered-by');
 
 	// include models
-	require('../server/models/post');
+	require('../server/models/report');
 
 	// include routes
 	require('../server/routes/core.routes')(app);
-	require('../server/routes/blog.routes')(app);
+	require('../server/routes/github.routes')(app);
 
 	// setup ssl if enabled
 	if (config.ssl.enabled) {

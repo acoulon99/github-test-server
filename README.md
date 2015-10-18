@@ -1,6 +1,6 @@
 # GitHub Integrated Test Server
 
-## Getting Started
+## Getting Started (development)
 
 ### Vagrant (recommended)
 Prerequiresites: [Vagrant](https://www.vagrantup.com/) and [VirtualBox](https://www.virtualbox.org/wiki/Download_Old_Builds_4_3) v4.3
