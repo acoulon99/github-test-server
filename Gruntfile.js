@@ -1,6 +1,16 @@
 module.exports = function(grunt) {
 
+    // grunt commandline options and defaults
+    var repo = grunt.option('repo') || 'acoulon99/github-test-server';
+    var branch = grunt.option('branch') || 'master';
+
     grunt.initConfig({
+        exec: {
+            runTest: {
+                command: 'bash ./bin/launch-test.sh ' + repo + ' ' + branch,
+                stdout: true
+            }
+        },
         watch: {
             files: [
                 '/vagrant/'
@@ -35,7 +45,9 @@ module.exports = function(grunt) {
 
     grunt.loadNpmTasks("grunt-contrib-watch");
     grunt.loadNpmTasks("grunt-rsync");
-    
+    grunt.loadNpmTasks("grunt-exec");
+
     grunt.registerTask('default', ['rsync:dev']);
     grunt.registerTask('update-host', ['rsync:host']);
+    grunt.registerTask('test', ['exec:runTest']);
 };

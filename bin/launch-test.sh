@@ -35,13 +35,15 @@ set +e
 npm test
 set -e
 
-# timestamp and copy results to the log folder
-CURRENT_TIME=$(date "+%Y-%m-%d-%H-%M-%S")
-LOGFILE=$PROJECT_HOME/logs/mocha-test-result.$CURRENT_TIME.xml
-cp mocha-test-result.xml $LOGFILE
+# If there's a test result file, then copy it to the log directory
+if [[ -f mocha-test-result.xml ]]; then
+	CURRENT_TIME=$(date "+%Y-%m-%d-%H-%M-%S")
+	LOGFILE=$PROJECT_HOME/logs/mocha-test-result.$CURRENT_TIME.xml
+	cp mocha-test-result.xml $LOGFILE
+fi
 popd > /dev/null
 
 # remove testing repository
-pushd $TESTGROUND > /dev/null
+pushd $TESTING_GROUND > /dev/null
 sudo rm -r $GIT_REF
 popd > /dev/null
